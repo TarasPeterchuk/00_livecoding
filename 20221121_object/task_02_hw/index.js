@@ -1,36 +1,13 @@
-//input: object
-//output:  array of object
+//input: two objects
+//output:  boolean
 
 // algo
-// 1. create ruesult array
-// 2. get key/values (.entries)
-// 3. add new id key to value => new obj
-// 4. push to arr (.map)
-// 5. sort objects by age (.sort)
-
-// draft 1
-// const getCustomersList = obj => {
-//   const resArr = [];
-//   const entries = Object.entries(obj);
-//   console.log(entries);
-//   for (let index = 0; index < entries.length; index += 1) {
-//     resArr.push({ ...entries[index][1], id: entries[index][0] });
-//   }
-//   console.log(resArr);
-// };
-
-// draft 2
-// const getCustomersList = obj => {
-//   const resArr = [];
-//   const entries = Object.entries(obj);
-//   for (let index = 0; index < entries.length; index += 1) {
-//     resArr.push({ ...entries[index][1], id: entries[index][0] });
-//   }
-//   console.log(resArr);
-//   resArr.sort((a, b) => a.age - b.age);
-//   console.log(resArr);
-//   return resArr;
-// };
+// ---Compare objects as string---
+// 1. make array from obj (.entries)
+// 2. sort each array by key of object(first element of subarrays) (.sort)
+// 3. make string from all elements of array (.reduce) .upd or JOIN
+// 4. repeat 1-3 for second object
+// 5. compare result strings
 
 'use strict';
 
@@ -39,9 +16,43 @@
  * @param {object} secondObj
  * @return {boolean}
  */
-function compareObjects(firstObj, secondObj) {
-  // put your code here
-}
+//draft
+// function compareObjects(firstObj, secondObj) {
+//   const strFirst = Object.entries(firstObj)
+//     .sort()
+//     // .flat()
+//     .reduce((acc, el) => acc + el);
+//   const strSecond = Object.entries(secondObj)
+//     .sort()
+//     // .flat()
+//     .reduce((acc, el) => acc + el);
+//   console.log(typeof strFirst);
+//   console.log(strFirst, strSecond);
+//   console.log(strFirst === strSecond);
+// }
+
+// draft 2 (with reduce)
+// function compareObjects(firstObj, secondObj) {
+//   return (
+//     Object.entries(firstObj)
+//       .sort()
+//       .reduce((acc, el) => acc + el) ===
+//     Object.entries(secondObj)
+//       .sort()
+//       .reduce((acc, el) => acc + el)
+//   );
+// console.log(Object.entries(firstObj).sort().join());
+// console.log(Object.entries(secondObj).sort().join());
+// }
+
+// draft 3 (with duplicate code)
+// const compareObjects = (firstObj, secondObj) =>
+//   Object.entries(firstObj).sort().join() === Object.entries(secondObj).sort().join();
+
+//final
+const strFromObjSorted = obj => Object.entries(obj).sort().join();
+const compareObjects = (firstObj, secondObj) =>
+  strFromObjSorted(firstObj) === strFromObjSorted(secondObj);
 
 // examples
 const obj1 = {
