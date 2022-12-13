@@ -31,9 +31,7 @@ const compareObjects = (firstObj, secondObj) =>
   Object.keys(firstObj).reduce(
     (acc, key, index) => (firstObj[key] === secondObj[key] && index === acc ? acc + 1 : -1),
     0,
-  ) === Object.keys(secondObj).length
-    ? true
-    : false;
+  ) === Object.keys(secondObj).length;
 
 // examples
 const obj1 = {
