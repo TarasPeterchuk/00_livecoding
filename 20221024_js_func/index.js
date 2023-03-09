@@ -30,8 +30,8 @@ console.log(sum(10, null));
 console.log(sum('2', -20));
 
 //func message
-function getMessage(age) {
-  console.log('I am ' + age + ' years old');
+function getMessage(age) { 
+  console.log('I am ' + age +  ' years old');
 }
 //test
 getMessage(10);
